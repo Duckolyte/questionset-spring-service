@@ -27,10 +27,10 @@ public class Question implements Serializable{
     private String label;
     private Boolean usesImage;
 
-    @OneToMany(mappedBy="answerId")
+    @OneToMany(mappedBy="questionId")
     private Set<Answer> answers;
 
-    @OneToMany(mappedBy="assetId")
+    @OneToMany(mappedBy="questionId")
     private Set<Asset> assets;
 
     @Column(nullable = false, updatable = false)
@@ -89,6 +89,22 @@ public class Question implements Serializable{
 
     public void setUsesImage(Boolean usesImage) {
       this.usesImage = usesImage;
+    }
+
+    public Set<Answer> getAnswers(){
+      return this.answers;
+    }
+
+    public void setAnswers(Set<Answer> answers){
+      this.answers = answers;
+    }
+
+    public Set<Asset> getAssets(){
+      return this.assets;
+    }
+
+    public void setAssets(Set<Asset> assets){
+      this.assets = assets;
     }
 
     public Date getCreatedAt() {
